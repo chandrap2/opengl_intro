@@ -1,2 +1,0 @@
-C:\Users\Chandra\source\repos\opengl_intro\Debug\opengl_intro.exe
-C:\Users\Chandra\source\repos\opengl_intro\Debug\opengl_intro.pdb
