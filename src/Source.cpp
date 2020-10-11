@@ -2,33 +2,35 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+#include "Shader.h";
+
 using namespace std;
 
-const char* vertShader =
-    "#version 430\r\n"
-    ""
-    "in layout(location=0) vec2 position;"
-    "in layout(location=1) vec3 inColor;"
-    ""
-    "out vec3 outColor;"
-    ""
-    "void main()"
-    "{"
-    "   gl_Position = vec4(position, 0.0, 1.0);"
-    "   outColor = inColor;"
-    "}";
-
-const char* fragShader =
-    "#version 430\r\n"
-    ""
-    "in vec3 outColor;"
-    ""
-    "out vec4 color;"
-    ""
-    "void main()"
-    "{"
-    "   color = vec4(outColor, 0.0);"
-    "}";
+//const char* vertShader =
+//    "#version 430\r\n"
+//    ""
+//    "in layout(location=0) vec2 position;"
+//    "in layout(location=1) vec3 inColor;"
+//    ""
+//    "out vec3 outColor;"
+//    ""
+//    "void main()"
+//    "{"
+//    "   gl_Position = vec4(position, 0.0, 1.0);"
+//    "   outColor = inColor;"
+//    "}";
+//
+//const char* fragShader =
+//    "#version 430\r\n"
+//    ""
+//    "in vec3 outColor;"
+//    ""
+//    "out vec4 color;"
+//    ""
+//    "void main()"
+//    "{"
+//    "   color = vec4(outColor, 0.0);"
+//    "}";
 
 // initializing vertex buffers
 void initBuffers() {
@@ -70,10 +72,12 @@ void initShaders() {
     GLuint vertShaderID = glCreateShader(GL_VERTEX_SHADER);
     GLuint fragShaderID = glCreateShader(GL_FRAGMENT_SHADER);
 
+    Shader vertShader("vertShader.txt");
+    Shader fragShader("fragShader.txt");
     const char* codeAdapter[1];
-    codeAdapter[0] = vertShader;
+    codeAdapter[0] = vertShader.getShader();
     glShaderSource(vertShaderID, 1, codeAdapter, 0);
-    codeAdapter[0] = fragShader;
+    codeAdapter[0] = fragShader.getShader();
     glShaderSource(fragShaderID, 1, codeAdapter, 0);
 
     glCompileShader(vertShaderID);
