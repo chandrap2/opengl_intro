@@ -3,59 +3,23 @@
 #include <iostream>
 
 #include "Shader.h";
+#include "Model.h";
 
 using namespace std;
 
-//const char* vertShader =
-//    "#version 430\r\n"
-//    ""
-//    "in layout(location=0) vec2 position;"
-//    "in layout(location=1) vec3 inColor;"
-//    ""
-//    "out vec3 outColor;"
-//    ""
-//    "void main()"
-//    "{"
-//    "   gl_Position = vec4(position, 0.0, 1.0);"
-//    "   outColor = inColor;"
-//    "}";
-//
-//const char* fragShader =
-//    "#version 430\r\n"
-//    ""
-//    "in vec3 outColor;"
-//    ""
-//    "out vec4 color;"
-//    ""
-//    "void main()"
-//    "{"
-//    "   color = vec4(outColor, 0.0);"
-//    "}";
-
 // initializing vertex buffers
-void initBuffers() {
-    GLfloat tri[] = {
-        -0.5f, -0.5f,
-        1.0f, 0.0f, 0.0f,
-        0.0f, 0.5f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.2f,
-        0.0f, 0.0f, 1.0f,
-        -0.4f, 0.5f,
-        0.0f, 1.0f, 0.0f,
-        -0.3f, 0.0f,
-        0.0f, 0.0f, 1.0f,
-    };
-
-    GLushort ind[] = { // indices of vertices
-        0, 1, 2,
-        0, 3, 4
-    };
+void initBuffers(Model& m) {
+    const int vertSize = m.getVertSize();
+    const int indSize = m.getIndSize();
+    GLfloat* tri = new GLfloat[vertSize];
+    GLshort* ind = new GLshort[indSize];
+    m.setVerts(tri, ind);
 
     GLuint bufferID;
     glGenBuffers(1, &bufferID); // creating a buffer, storing uid inside bufferID
     glBindBuffer(GL_ARRAY_BUFFER, bufferID); // binding uid to GL_ARRAY_BUFFER
-    glBufferData(GL_ARRAY_BUFFER, sizeof(tri), tri, GL_STATIC_DRAW); // initializing buffer with data
+    glBufferData(GL_ARRAY_BUFFER, vertSize * sizeof(float), tri, GL_STATIC_DRAW); // initializing buffer with data
+    //glBufferData(GL_ARRAY_BUFFER, sizeof(tri2), tri2, GL_STATIC_DRAW); // initializing buffer with data
     glEnableVertexAttribArray(0); // vertex position
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, 0);
     glEnableVertexAttribArray(1); // vertex color
@@ -64,7 +28,8 @@ void initBuffers() {
     GLuint indBufferID;
     glGenBuffers(1, &indBufferID); // buffer of vertex indices
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indBufferID);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(ind), ind, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indSize * sizeof(GLshort), ind, GL_STATIC_DRAW);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(ind2), ind2, GL_STATIC_DRAW);
 }
 
 // initializing and linking shaders
@@ -113,7 +78,9 @@ int main(void)
         cout << "glew error";
     cout << glGetString(GL_VERSION) << endl;
 
-    initBuffers();
+    Model m1("model - Copy.txt");
+
+    initBuffers(m1);
     initShaders();
     
     /* Loop until the user closes the window */
@@ -124,8 +91,9 @@ int main(void)
 
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
 
-        /* Swap front and back buffers */
+        ///* Swap front and back buffers */
         glfwSwapBuffers(window);
+
 
         /* Poll for and process events */
         glfwPollEvents();

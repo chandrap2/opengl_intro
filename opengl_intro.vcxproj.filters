@@ -18,13 +18,21 @@
     <ClCompile Include="src\Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\fragShader.txt" />
     <Text Include="src\vertShader.txt" />
+    <Text Include="src\model.txt" />
+    <Text Include="src\model - Copy.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
