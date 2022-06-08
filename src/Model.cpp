@@ -12,28 +12,36 @@ void Model::readModel(string modelFile) {
 	file.open(modelFile);
 	getline(file, line);
 	int numVerts = stoi(line);
-	this->vertices.reserve(numVerts * 5);
-	//cout << numVerts << endl;
+	this->vertices.reserve(numVerts * 6);
 	
-	float x, y, r, g, b;
+	float x, y, z, r, g, b;
 	istringstream ss;
 	for (int i = 0; i < numVerts; i++) {
 		ss.clear();
 		getline(file, line);
+		
+		while (line.length() == 0)
+			getline(file, line);
+		
 		ss.str(line);
-		ss >> x >> y;
+		ss >> x >> y >> z;
 		this->vertices.push_back(x);
 		this->vertices.push_back(y);
+		this->vertices.push_back(z);
 
 		ss.clear();
 		getline(file, line);
+
+		while (line.length() == 0)
+			getline(file, line);
+
 		ss.str(line);
 		ss >> r >> g >> b;
 		this->vertices.push_back(r);
 		this->vertices.push_back(g);
 		this->vertices.push_back(b);
 
-		std::cout << x << ", " << y << std::endl;
+		std::cout << x << ", " << y << ", " << z << std::endl;
 		std::cout << r << ", " << g << ", " << b << std::endl << std::endl;
 	}
 
@@ -41,6 +49,9 @@ void Model::readModel(string modelFile) {
 
 	int p1, p2, p3;
 	while (getline(file, line)) {
+		while (line.length() == 0)
+			getline(file, line);
+
 		ss.clear();
 		ss.str(line);
 		ss >> p1 >> p2 >> p3;

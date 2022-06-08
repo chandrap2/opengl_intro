@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies/GLFW/include;$(SolutionDir)dependencies\GLEW\include;$(SolutionDir)src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies/GLFW/include;$(SolutionDir)dependencies\GLEW\include;$(SolutionDir)dependencies\glm\glm;$(SolutionDir)src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,18 +145,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dependencies\GLEW\include\GL\eglew.h" />
+    <ClInclude Include="dependencies\GLEW\include\GL\glew.h" />
+    <ClInclude Include="dependencies\GLEW\include\GL\glxew.h" />
+    <ClInclude Include="dependencies\GLEW\include\GL\wglew.h" />
+    <ClInclude Include="dependencies\GLFW\include\GLFW\glfw3.h" />
+    <ClInclude Include="dependencies\GLFW\include\GLFW\glfw3native.h" />
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="src\Cube2.txt" />
     <Text Include="src\fragShader.txt" />
     <Text Include="src\model - Copy.txt" />
     <Text Include="src\model.txt" />
+    <Text Include="src\Cube.txt" />
     <Text Include="src\vertShader.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dependencies\GLEW\doc\advanced.html" />
+    <None Include="dependencies\GLEW\doc\basic.html" />
+    <None Include="dependencies\GLEW\doc\build.html" />
+    <None Include="dependencies\GLEW\doc\credits.html" />
+    <None Include="dependencies\GLEW\doc\glew.html" />
+    <None Include="dependencies\GLEW\doc\glxew.html" />
+    <None Include="dependencies\GLEW\doc\index.html" />
+    <None Include="dependencies\GLEW\doc\install.html" />
+    <None Include="dependencies\GLEW\doc\log.html" />
+    <None Include="dependencies\GLEW\doc\wglew.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,12 +21,17 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\fragShader.txt" />
     <Text Include="src\vertShader.txt" />
     <Text Include="src\model.txt" />
     <Text Include="src\model - Copy.txt" />
+    <Text Include="src\Cube.txt" />
+    <Text Include="src\Cube2.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h">
@@ -35,5 +40,38 @@
     <ClInclude Include="src\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="dependencies\GLEW\include\GL\eglew.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\GLEW\include\GL\glew.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\GLEW\include\GL\glxew.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\GLEW\include\GL\wglew.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\GLFW\include\GLFW\glfw3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\GLFW\include\GLFW\glfw3native.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dependencies\GLEW\doc\advanced.html" />
+    <None Include="dependencies\GLEW\doc\basic.html" />
+    <None Include="dependencies\GLEW\doc\build.html" />
+    <None Include="dependencies\GLEW\doc\credits.html" />
+    <None Include="dependencies\GLEW\doc\glew.html" />
+    <None Include="dependencies\GLEW\doc\glxew.html" />
+    <None Include="dependencies\GLEW\doc\index.html" />
+    <None Include="dependencies\GLEW\doc\install.html" />
+    <None Include="dependencies\GLEW\doc\log.html" />
+    <None Include="dependencies\GLEW\doc\wglew.html" />
   </ItemGroup>
 </Project>
