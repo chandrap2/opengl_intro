@@ -14,40 +14,45 @@ void Model::readModel(string modelFile) {
 	int numVerts = stoi(line);
 	this->vertices.reserve(numVerts * 6);
 	
-	float x, y, z, r, g, b;
+	float x, y, z, nx, ny, nz;
 	istringstream ss;
 	for (int i = 0; i < numVerts; i++) {
 		ss.clear();
 		getline(file, line);
 		
-		while (line.length() == 0)
+		while (line.length() == 0) {
+			cout << endl;
 			getline(file, line);
+		}
 		
 		ss.str(line);
-		ss >> x >> y >> z;
+		ss >> x >> y >> z >> nx >> ny >> nz;
 		this->vertices.push_back(x);
 		this->vertices.push_back(y);
 		this->vertices.push_back(z);
+		this->vertices.push_back(nx);
+		this->vertices.push_back(ny);
+		this->vertices.push_back(nz);
 
-		ss.clear();
-		getline(file, line);
+		//ss.clear();
+		//getline(file, line);
 
-		while (line.length() == 0)
-			getline(file, line);
+		//while (line.length() == 0)
+		//	getline(file, line);
 
-		ss.str(line);
-		ss >> r >> g >> b;
-		this->vertices.push_back(r);
-		this->vertices.push_back(g);
-		this->vertices.push_back(b);
+		//ss.str(line);
+		//ss >> r >> g >> b;
+		//this->vertices.push_back(r);
+		//this->vertices.push_back(g);
+		//this->vertices.push_back(b);
 
-		std::cout << x << ", " << y << ", " << z << std::endl;
-		std::cout << r << ", " << g << ", " << b << std::endl << std::endl;
+		std::cout << x << ", " << y << ", " << z << " : ";
+		std::cout << nx << ", " << ny << ", " << nz << endl;
 	}
 
-	std::cout << std::endl;
+	//std::cout << std::endl;
 
-	int p1, p2, p3;
+	/*int p1, p2, p3;
 	while (getline(file, line)) {
 		while (line.length() == 0)
 			getline(file, line);
@@ -60,7 +65,7 @@ void Model::readModel(string modelFile) {
 		this->vertInd.push_back(p2);
 		this->vertInd.push_back(p3);
 		std::cout << p1 << ", " << p2 << ", " << p3 << std::endl;
-	}
+	}*/
 
 	file.close();
 }
@@ -77,6 +82,11 @@ void Model::setVerts(float* verts, short* ind) {
 		//std::cout << ind[i] << std::endl;
 	}
 	std::cout << std::endl;
+}
+
+void Model::setVerts(float* verts) {
+	for (int i = 0; i < this->vertices.size(); i++)
+		verts[i] = this->vertices[i];
 }
 
 int Model::getVertSize() { return this->vertices.size(); }

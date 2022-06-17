@@ -13,6 +13,7 @@ private:
 public:
 	Model(string modelFile);
 	void readModel(string modelFile);
+	void setVerts(float* verts);
 	void setVerts(float* verts, short* ind);
 
 	int getVertSize();
